@@ -1,0 +1,2896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>EasyPC Philippines — #1 Online PC Store</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Exo+2:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --g: #00e676;
+      --gd: #00c853;
+      --gx: #69f0ae;
+      --glow: rgba(0, 230, 118, 0.22);
+      --bg: #050505;
+      --bg2: #0a0f0a;
+      --card: #0d130d;
+      --card2: #111a11;
+      --bdr: #1a2e1a;
+      --bdr2: #243524;
+      --txt: #e8ffe8;
+      --mute: #4a7a52;
+      --wht: #ffffff;
+      --fh: 'Orbitron', sans-serif;
+      --fb: 'Exo 2', sans-serif;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--txt);
+      font-family: var(--fb);
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: var(--bg2); }
+    ::-webkit-scrollbar-thumb { background: var(--gd); border-radius: 3px; }
+
+    a { text-decoration: none; }
+    img { display: block; }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 9998;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+      );
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, #061006, #0a1f0a, #061006);
+      border-bottom: 1px solid var(--bdr);
+      padding: 6px 0;
+      font-family: var(--fb);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: var(--txt);
+    }
+
+    .topbar a {
+      color: var(--g);
+      text-decoration: none;
+    }
+
+    .topbar a:hover { color: var(--wht); }
+
+    .topbar .sep {
+      color: var(--bdr2);
+      margin: 0 10px;
+    }
+
+    .navbar {
+      background: #050505 !important;
+      border-bottom: 1px solid var(--bdr);
+      padding: .6rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1050;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .8);
+    }
+
+    .navbar-brand {
+      font-family: var(--fh);
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--wht) !important;
+      letter-spacing: .12em;
+    }
+
+    .navbar-brand .g { color: var(--g); }
+
+    .nav-link {
+      color: var(--txt) !important;
+      font-family: var(--fb);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .5rem .85rem !important;
+      transition: color .2s;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: .85rem;
+      right: .85rem;
+      height: 2px;
+      background: var(--g);
+      transform: scaleX(0);
+      transition: transform .25s;
+      border-radius: 2px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--g) !important;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      transform: scaleX(1);
+    }
+
+    .dropdown-menu {
+      background: #0a0f0a;
+      border: 1px solid var(--bdr2);
+      border-radius: 6px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, .7);
+    }
+
+    .dropdown-item {
+      color: var(--txt);
+      font-family: var(--fb);
+      font-size: .87rem;
+      font-weight: 500;
+      padding: 9px 18px;
+      transition: all .18s;
+    }
+
+    .dropdown-item:hover {
+      background: rgba(0, 230, 118, .08);
+      color: var(--g);
+    }
+
+    .dropdown-item i {
+      color: var(--g);
+      margin-right: 8px;
+    }
+
+    .srch-wrap {
+      display: flex;
+      align-items: center;
+    }
+
+    .srch-wrap input {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      color: var(--wht);
+      border-radius: 4px 0 0 4px;
+      padding: .38rem .9rem;
+      font-family: var(--fb);
+      font-size: .83rem;
+      min-width: 200px;
+      outline: none;
+      transition: border .2s, background .2s;
+    }
+
+    .srch-wrap input::placeholder { color: var(--mute); }
+
+    .srch-wrap input:focus {
+      border-color: var(--g);
+      background: rgba(0, 230, 118, .04);
+    }
+
+    .srch-btn {
+      background: var(--gd);
+      border: none;
+      color: #000;
+      padding: .38rem .95rem;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: background .2s;
+    }
+
+    .srch-btn:hover { background: var(--g); }
+
+    .cart-ico {
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 1rem;
+      position: relative;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .cart-ico:hover {
+      background: var(--gd);
+      box-shadow: 0 0 18px var(--glow);
+    }
+
+    .c-badge {
+      position: absolute;
+      top: -7px;
+      right: -7px;
+      background: #ef4444;
+      color: #fff;
+      font-size: .58rem;
+      font-weight: 700;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero {
+      min-height: 500px;
+      background: var(--bg2);
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-mesh {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 65% 50%, rgba(0, 200, 83, .07) 0%, transparent 70%),
+        radial-gradient(ellipse 30% 50% at 20% 80%, rgba(0, 230, 118, .04) 0%, transparent 60%);
+    }
+
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 230, 118, .04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 118, .04) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+
+    .hero-corner {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border: 1.5px solid rgba(0, 230, 118, .12);
+    }
+
+    .hero-corner.tl {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .hero-corner.br {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .hero-img {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 52%;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 4%;
+      overflow: hidden;
+    }
+
+    .hero-img img {
+      max-height: 420px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 60px rgba(0, 230, 118, .25)) drop-shadow(0 0 20px rgba(0, 230, 118, .15));
+      position: relative;
+      z-index: 0;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50% { transform: translateY(-14px) scale(1.01); }
+    }
+
+    .hero-img::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--bg2) 10%, rgba(10, 15, 10, .3) 55%, transparent 75%);
+      z-index: 2;
+    }
+
+    .hero-body {
+      position: relative;
+      z-index: 3;
+      padding: 3.5rem 0;
+    }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--g);
+      color: #000;
+      font-family: var(--fb);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 2px;
+      margin-bottom: 1.1rem;
+    }
+
+    .hero-h {
+      font-family: var(--fh);
+      font-size: clamp(2rem, 5.5vw, 3.4rem);
+      font-weight: 900;
+      color: var(--wht);
+      line-height: 1.05;
+      margin-bottom: .9rem;
+      letter-spacing: .02em;
+    }
+
+    .hero-h .g { color: var(--g); }
+
+    .hero-price {
+      display: inline-block;
+      background: rgba(0, 230, 118, .1);
+      border: 1px solid rgba(0, 230, 118, .3);
+      color: var(--g);
+      font-family: var(--fb);
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 6px 18px;
+      border-radius: 3px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-sub {
+      color: rgba(232, 255, 232, .6);
+      font-size: .93rem;
+      max-width: 400px;
+      margin-bottom: 1.8rem;
+      line-height: 1.8;
+    }
+
+    .btn-g {
+      background: var(--g);
+      color: #000 !important;
+      border: none;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: .84rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 12px 28px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .25s;
+      display: inline-block;
+    }
+
+    .btn-g:hover {
+      background: var(--gd);
+      box-shadow: 0 4px 24px var(--glow);
+    }
+
+    .btn-og {
+      background: transparent;
+      border: 2px solid var(--g);
+      color: var(--g) !important;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: .84rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 10px 28px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .25s;
+      display: inline-block;
+    }
+
+    .btn-og:hover {
+      background: var(--g);
+      color: #000 !important;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      width: 32px;
+      height: 3px;
+      background: rgba(255, 255, 255, .2);
+      border: none;
+      border-radius: 2px;
+    }
+
+    .carousel-indicators .active {
+      background: var(--g);
+      width: 48px;
+    }
+
+    .ticker {
+      background: var(--card);
+      border-top: 1px solid var(--bdr);
+      border-bottom: 1px solid var(--bdr);
+      overflow: hidden;
+      padding: 9px 0;
+    }
+
+    .ticker-inner {
+      display: flex;
+      white-space: nowrap;
+    }
+
+    .tick-i {
+      padding: 0 2rem;
+      font-family: var(--fb);
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      color: var(--txt);
+      border-right: 1px solid var(--bdr2);
+      flex-shrink: 0;
+    }
+
+    .tick-i .dot {
+      color: var(--g);
+      margin-right: 6px;
+    }
+
+    @keyframes tick {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    .lbl {
+      font-family: var(--fb);
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: .3rem;
+    }
+
+    .stitle {
+      font-family: var(--fh);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 900;
+      color: var(--wht);
+      letter-spacing: .04em;
+    }
+
+    .sp { padding: 5rem 0; }
+    .sp-s { padding: 3.5rem 0; }
+
+    .cat-c {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-radius: 8px;
+      padding: 1.4rem .7rem;
+      text-align: center;
+      display: block;
+      transition: all .25s;
+    }
+
+    .cat-c:hover {
+      border-color: var(--g);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 30px var(--glow);
+    }
+
+    .cat-c img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      margin: 0 auto .65rem;
+    }
+
+    .cat-n {
+      font-family: var(--fb);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--txt);
+    }
+
+    .cat-c:hover .cat-n { color: var(--g); }
+
+    .pc {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-radius: 8px;
+      overflow: hidden;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: all .28s;
+      position: relative;
+    }
+
+    .pc:hover {
+      border-color: var(--g);
+      transform: translateY(-6px);
+      box-shadow: 0 16px 50px rgba(0, 0, 0, .6), 0 0 0 1px rgba(0, 230, 118, .15);
+    }
+
+    .pbadge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 2;
+      font-family: var(--fb);
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      padding: 3px 10px;
+      border-radius: 3px;
+    }
+
+    .pbadge.new { background: var(--g); color: #000; }
+    .pbadge.sale { background: #ef4444; color: #fff; }
+    .pbadge.hot { background: #f97316; color: #fff; }
+    .pbadge.fast { background: #3b82f6; color: #fff; }
+
+    .pimg {
+      background: var(--card2);
+      height: 190px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 1.2rem;
+    }
+
+    .pimg img {
+      max-height: 155px;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform .35s ease;
+    }
+
+    .pc:hover .pimg img { transform: scale(1.07); }
+
+    .pbody {
+      padding: .9rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .pcat {
+      font-size: .58rem;
+      font-weight: 700;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: .25rem;
+    }
+
+    .pname {
+      font-family: var(--fb);
+      font-size: .9rem;
+      font-weight: 600;
+      color: var(--wht);
+      line-height: 1.35;
+      margin-bottom: .4rem;
+      min-height: 2.4rem;
+    }
+
+    .pspec {
+      font-size: .68rem;
+      color: var(--mute);
+      line-height: 1.7;
+      margin-bottom: .6rem;
+      flex: 1;
+    }
+
+    .pstars { font-size: .72rem; margin-bottom: .35rem; }
+    .pstars .s { color: #facc15; }
+    .pstars .e { color: var(--bdr2); }
+    .pstars .cnt { color: var(--mute); margin-left: 3px; font-size: .66rem; }
+
+    .orig {
+      font-size: .72rem;
+      color: var(--mute);
+      text-decoration: line-through;
+    }
+
+    .price {
+      font-family: var(--fh);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--g);
+    }
+
+    .stk {
+      font-size: .63rem;
+      font-weight: 700;
+      margin-top: .2rem;
+    }
+
+    .stk.y { color: var(--g); }
+    .stk.n { color: #fb923c; }
+
+    .pfoot {
+      padding: .75rem;
+      border-top: 1px solid var(--bdr2);
+      display: flex;
+      gap: .5rem;
+    }
+
+    .btn-cart {
+      flex: 1;
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: .76rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 9px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-cart:hover {
+      background: var(--gd);
+      box-shadow: 0 4px 14px var(--glow);
+    }
+
+    .btn-wish {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      padding: 9px 13px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-wish:hover { border-color: #ef4444; color: #ef4444; }
+    .btn-wish.wished { border-color: #ef4444; color: #ef4444; background: rgba(239, 68, 68, .08); }
+
+    .fbtn {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      font-family: var(--fb);
+      font-weight: 600;
+      font-size: .76rem;
+      letter-spacing: .1em;
+      padding: 6px 16px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .fbtn:hover,
+    .fbtn.act {
+      background: var(--g);
+      border-color: var(--g);
+      color: #000;
+    }
+
+    .new-arr-strip {
+      background: var(--card2);
+      border-top: 1px solid var(--bdr);
+      border-bottom: 1px solid var(--bdr);
+      padding: 2.5rem 0;
+    }
+
+    .na-card {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-radius: 8px;
+      overflow: hidden;
+      transition: all .25s;
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .9rem 1rem;
+    }
+
+    .na-card:hover {
+      border-color: var(--g);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, .5), 0 0 0 1px rgba(0, 230, 118, .12);
+    }
+
+    .na-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: var(--g);
+      color: #000;
+      font-family: var(--fb);
+      font-size: .52rem;
+      font-weight: 700;
+      letter-spacing: .18em;
+      padding: 2px 8px;
+      border-radius: 2px;
+    }
+
+    .na-img {
+      width: 72px;
+      height: 72px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: var(--card2);
+      border-radius: 6px;
+      padding: 6px;
+    }
+
+    .na-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .na-cat {
+      font-size: .55rem;
+      color: var(--g);
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      margin-bottom: 2px;
+    }
+
+    .na-name {
+      font-family: var(--fb);
+      font-size: .84rem;
+      font-weight: 600;
+      color: var(--wht);
+      line-height: 1.3;
+      margin-bottom: 3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .na-price {
+      font-family: var(--fh);
+      font-size: .9rem;
+      font-weight: 700;
+      color: var(--g);
+    }
+
+    .na-old {
+      font-size: .65rem;
+      color: var(--mute);
+      text-decoration: line-through;
+      margin-right: 4px;
+    }
+
+    .na-btn {
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-family: var(--fb);
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      padding: 6px 12px;
+      border-radius: 3px;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .na-btn:hover { background: var(--gd); }
+
+    .build-wrap {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-radius: 12px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+    }
+
+    @media (max-width: 991px) {
+      .build-wrap { grid-template-columns: 1fr; }
+    }
+
+    .build-l {
+      padding: 3rem 2.5rem;
+      background: var(--bg2);
+      border-right: 1px solid var(--bdr2);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .build-l::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0, 230, 118, .03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 230, 118, .03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .build-l > * { position: relative; z-index: 1; }
+
+    .build-h {
+      font-family: var(--fh);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 900;
+      color: var(--wht);
+      margin-bottom: .7rem;
+      line-height: 1.1;
+    }
+
+    .build-h .g { color: var(--g); }
+
+    .build-preview {
+      flex: 1;
+      margin-top: 1.5rem;
+      background: rgba(0, 230, 118, .03);
+      border: 1px solid var(--bdr2);
+      border-radius: 8px;
+      padding: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 180px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .build-preview::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 80% at 50% 50%, rgba(0, 230, 118, .06), transparent);
+    }
+
+    .build-preview img {
+      max-height: 160px;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 30px rgba(0, 230, 118, .3));
+      transition: all .4s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .no-preview {
+      text-align: center;
+      color: var(--mute);
+      font-size: .8rem;
+      font-family: var(--fb);
+      letter-spacing: .1em;
+    }
+
+    .build-preset-btns {
+      display: flex;
+      gap: .5rem;
+      flex-wrap: wrap;
+      margin-top: 1.2rem;
+    }
+
+    .preset-btn {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      font-family: var(--fb);
+      font-weight: 600;
+      font-size: .7rem;
+      letter-spacing: .08em;
+      padding: 6px 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .preset-btn:hover,
+    .preset-btn.active {
+      background: rgba(0, 230, 118, .12);
+      border-color: var(--g);
+      color: var(--g);
+    }
+
+    .build-r {
+      padding: 2rem 1.6rem;
+      background: var(--bg2);
+    }
+
+    .part-row {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: rgba(255, 255, 255, .02);
+      border: 1px solid var(--bdr2);
+      border-radius: 6px;
+      padding: .6rem .75rem;
+      margin-bottom: .5rem;
+      transition: all .25s;
+    }
+
+    .part-row:hover { border-color: rgba(0, 230, 118, .3); }
+    .part-row.selected { border-color: var(--g); background: rgba(0, 230, 118, .04); }
+
+    .part-thumb {
+      width: 44px;
+      height: 44px;
+      object-fit: contain;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, .03);
+      border-radius: 4px;
+      padding: 4px;
+      border: 1px solid var(--bdr);
+    }
+
+    .part-thumb-empty {
+      width: 44px;
+      height: 44px;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, .03);
+      border: 1px dashed var(--bdr2);
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--mute);
+      font-size: 1.1rem;
+    }
+
+    .part-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .part-lbl {
+      font-size: .55rem;
+      color: var(--mute);
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 1px;
+    }
+
+    .part-select {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--wht);
+      font-family: var(--fb);
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      padding: 0;
+      appearance: none;
+      -webkit-appearance: none;
+    }
+
+    .part-select option { background: #0a0f0a; color: var(--txt); }
+    .part-select.empty-sel { color: var(--mute); font-weight: 400; }
+
+    .part-price {
+      font-family: var(--fh);
+      font-weight: 700;
+      font-size: .84rem;
+      color: var(--g);
+      white-space: nowrap;
+      min-width: 68px;
+      text-align: right;
+    }
+
+    .part-price.hidden { display: none; }
+
+    .remove-part {
+      background: transparent;
+      border: none;
+      color: var(--mute);
+      font-size: .85rem;
+      cursor: pointer;
+      padding: 2px 4px;
+      border-radius: 3px;
+      transition: color .2s;
+      flex-shrink: 0;
+    }
+
+    .remove-part:hover { color: #ef4444; }
+
+    .build-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem .75rem;
+      margin-top: .3rem;
+      background: rgba(0, 230, 118, .05);
+      border: 1px solid rgba(0, 230, 118, .2);
+      border-radius: 6px;
+    }
+
+    .build-total-lbl {
+      font-family: var(--fb);
+      font-size: .78rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--mute);
+    }
+
+    .build-total-val {
+      font-family: var(--fh);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--g);
+    }
+
+    .build-actions {
+      display: flex;
+      gap: .6rem;
+      margin-top: .8rem;
+    }
+
+    .btn-build-cart {
+      flex: 1;
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 11px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-build-cart:hover {
+      background: var(--gd);
+      box-shadow: 0 4px 20px var(--glow);
+    }
+
+    .btn-build-cart:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+      background: var(--mute);
+    }
+
+    .btn-build-save {
+      background: transparent;
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      font-family: var(--fb);
+      font-weight: 600;
+      font-size: .8rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-build-save:hover { border-color: var(--g); color: var(--g); }
+
+    .compat-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: .64rem;
+      font-family: var(--fb);
+      font-weight: 600;
+      letter-spacing: .08em;
+      padding: 3px 10px;
+      border-radius: 3px;
+      margin-top: .5rem;
+    }
+
+    .compat-ok {
+      background: rgba(0, 230, 118, .1);
+      color: var(--g);
+      border: 1px solid rgba(0, 230, 118, .25);
+    }
+
+    .compat-warn {
+      background: rgba(251, 146, 60, .1);
+      color: #fb923c;
+      border: 1px solid rgba(251, 146, 60, .25);
+    }
+
+    .part-count-badge {
+      font-size: .6rem;
+      font-family: var(--fb);
+      color: var(--mute);
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--bdr);
+      border-radius: 3px;
+      padding: 1px 6px;
+      margin-left: 4px;
+    }
+
+    .brand-box {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-radius: 6px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .brand-box:hover {
+      border-color: var(--g);
+      box-shadow: 0 4px 20px var(--glow);
+    }
+
+    .brand-box img {
+      max-height: 32px;
+      max-width: 88px;
+      object-fit: contain;
+      filter: brightness(0) invert(1) opacity(.9);
+      transition: filter .2s;
+    }
+
+    .brand-box:hover img {
+      filter: brightness(0) saturate(100%) invert(71%) sepia(80%) saturate(500%) hue-rotate(95deg) brightness(1.1) contrast(1.1);
+    }
+
+    .perk {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-top: 3px solid var(--g);
+      border-radius: 8px;
+      padding: 1.8rem 1.25rem;
+      text-align: center;
+      transition: all .25s;
+    }
+
+    .perk:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 36px var(--glow);
+      border-color: var(--g);
+    }
+
+    .perk-ico {
+      font-size: 2.4rem;
+      display: block;
+      margin-bottom: .8rem;
+    }
+
+    .perk-t {
+      font-family: var(--fb);
+      font-size: .98rem;
+      font-weight: 700;
+      color: var(--wht);
+      margin-bottom: .4rem;
+    }
+
+    .perk-d {
+      font-size: .8rem;
+      color: var(--mute);
+      line-height: 1.7;
+    }
+
+    .nl {
+      background: var(--card2);
+      border-top: 1px solid var(--bdr);
+      border-bottom: 1px solid var(--bdr);
+      padding: 4rem 0;
+    }
+
+    .nl-h {
+      font-family: var(--fh);
+      font-size: 1.7rem;
+      font-weight: 900;
+      color: var(--wht);
+    }
+
+    .nl-h .g { color: var(--g); }
+
+    .nl-s {
+      color: var(--mute);
+      font-size: .88rem;
+    }
+
+    .nl input {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      color: var(--wht);
+      border-radius: 4px 0 0 4px;
+      padding: 13px 16px;
+      font-family: var(--fb);
+      font-size: .88rem;
+      width: 100%;
+      outline: none;
+      transition: border .2s;
+    }
+
+    .nl input::placeholder { color: var(--mute); }
+    .nl input:focus { border-color: var(--g); }
+
+    .nl-btn {
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: .84rem;
+      letter-spacing: .1em;
+      padding: 13px 22px;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
+      transition: all .2s;
+      white-space: nowrap;
+    }
+
+    .nl-btn:hover { background: var(--gd); }
+
+    footer {
+      background: var(--bg2);
+      border-top: 1px solid var(--bdr);
+      padding: 3.5rem 0 1.5rem;
+    }
+
+    .ft-brand {
+      font-family: var(--fh);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--wht);
+    }
+
+    .ft-brand .g { color: var(--g); }
+
+    .ft-tag {
+      font-size: .76rem;
+      color: var(--mute);
+      margin-top: .3rem;
+    }
+
+    .ft-p {
+      font-size: .8rem;
+      color: var(--mute);
+      line-height: 1.8;
+      margin-top: .9rem;
+      max-width: 280px;
+    }
+
+    .ft-h {
+      font-family: var(--fb);
+      font-size: .66rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--g);
+      margin-bottom: .9rem;
+    }
+
+    .ft-ul { list-style: none; }
+
+    .ft-ul li { margin-bottom: .42rem; }
+
+    .ft-ul a {
+      color: var(--mute);
+      font-size: .82rem;
+      transition: color .2s;
+    }
+
+    .ft-ul a:hover { color: var(--g); }
+
+    .ft-ul li i {
+      color: var(--g);
+      margin-right: 6px;
+      font-size: .82rem;
+    }
+
+    .ft-ul li span {
+      color: var(--mute);
+      font-size: .82rem;
+    }
+
+    .ft-hr {
+      border-color: var(--bdr);
+      margin: 2rem 0 1.5rem;
+    }
+
+    .ft-copy {
+      font-size: .7rem;
+      color: rgba(74, 122, 82, .4);
+    }
+
+    .soc {
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all .2s;
+    }
+
+    .soc:hover {
+      background: var(--g);
+      border-color: var(--g);
+      color: #000;
+    }
+
+    #cartDrawer { background: var(--bg2) !important; }
+    #cartDrawer .offcanvas-header { border-bottom: 1px solid var(--bdr); }
+
+    #cartDrawer .offcanvas-title {
+      font-family: var(--fb);
+      font-weight: 700;
+      color: var(--wht);
+      font-size: 1rem;
+    }
+
+    #cartDrawer .btn-close { filter: invert(1) brightness(.55); }
+
+    .c-row {
+      padding: .85rem 0;
+      border-bottom: 1px solid var(--bdr);
+    }
+
+    .c-nm {
+      font-family: var(--fb);
+      font-size: .86rem;
+      font-weight: 600;
+      color: var(--wht);
+    }
+
+    .c-px {
+      font-family: var(--fb);
+      font-weight: 700;
+      color: var(--g);
+      font-size: .9rem;
+    }
+
+    .q-btn {
+      background: rgba(255, 255, 255, .05);
+      border: 1px solid var(--bdr2);
+      color: var(--txt);
+      width: 26px;
+      height: 26px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 3px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      transition: all .2s;
+    }
+
+    .q-btn:hover { border-color: var(--g); color: var(--g); }
+
+    .c-total-lbl {
+      font-family: var(--fb);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--wht);
+    }
+
+    .c-total-val {
+      font-family: var(--fh);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--g);
+    }
+
+    .btn-place {
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: .88rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      width: 100%;
+      padding: 14px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all .2s;
+    }
+
+    .btn-place:hover { background: var(--gd); }
+
+    .btn-clr {
+      background: transparent;
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      width: 100%;
+      padding: 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--fb);
+      font-size: .8rem;
+      margin-top: .5rem;
+      transition: all .2s;
+    }
+
+    .btn-clr:hover { border-color: #ef4444; color: #ef4444; }
+
+    #toasts {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+
+    .toast-p {
+      background: var(--card);
+      border: 1px solid var(--g);
+      color: var(--wht);
+      font-family: var(--fb);
+      font-size: .86rem;
+      padding: 10px 18px;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, .6), 0 0 12px var(--glow);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: tin .3s ease both;
+    }
+
+    @keyframes tin {
+      from { opacity: 0; transform: translateX(50px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .pay-tag {
+      background: rgba(255, 255, 255, .04);
+      border: 1px solid var(--bdr2);
+      padding: 4px 10px;
+      font-size: .68rem;
+      color: var(--mute);
+      border-radius: 3px;
+    }
+
+    /* ── Auth Overlay ─────────────────────────────────────────── */
+    #authOverlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(6px);
+    }
+
+    .auth-box {
+      background: var(--card);
+      border: 1px solid var(--bdr2);
+      border-radius: 12px;
+      padding: 2.5rem 2rem;
+      width: 100%;
+      max-width: 420px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.8), 0 0 40px var(--glow);
+      position: relative;
+    }
+
+    .auth-logo {
+      font-family: var(--fh);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--wht);
+      text-align: center;
+      margin-bottom: 0.3rem;
+      letter-spacing: 0.1em;
+    }
+
+    .auth-logo .g { color: var(--g); }
+
+    .auth-subtitle {
+      text-align: center;
+      color: var(--mute);
+      font-size: 0.82rem;
+      margin-bottom: 1.8rem;
+      font-family: var(--fb);
+    }
+
+    .auth-tab-btns {
+      display: flex;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--bdr2);
+      border-radius: 6px;
+      padding: 3px;
+      margin-bottom: 1.6rem;
+    }
+
+    .auth-tab-btn {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--mute);
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 9px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .auth-tab-btn.active {
+      background: var(--g);
+      color: #000;
+    }
+
+    .auth-field {
+      margin-bottom: 1rem;
+    }
+
+    .auth-field label {
+      display: block;
+      font-family: var(--fb);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--mute);
+      margin-bottom: 0.4rem;
+    }
+
+    .auth-field input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--bdr2);
+      color: var(--wht);
+      border-radius: 5px;
+      padding: 10px 14px;
+      font-family: var(--fb);
+      font-size: 0.88rem;
+      outline: none;
+      transition: border 0.2s, background 0.2s;
+    }
+
+    .auth-field input::placeholder { color: var(--mute); }
+
+    .auth-field input:focus {
+      border-color: var(--g);
+      background: rgba(0,230,118,0.04);
+    }
+
+    .auth-btn {
+      width: 100%;
+      background: var(--g);
+      border: none;
+      color: #000;
+      font-family: var(--fb);
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 13px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s;
+      margin-top: 0.4rem;
+    }
+
+    .auth-btn:hover { background: var(--gd); box-shadow: 0 4px 20px var(--glow); }
+
+    .auth-err {
+      color: #ef4444;
+      font-size: 0.78rem;
+      font-family: var(--fb);
+      text-align: center;
+      margin-top: 0.5rem;
+      min-height: 1.2em;
+    }
+
+    .auth-ok {
+      color: var(--g);
+      font-size: 0.78rem;
+      font-family: var(--fb);
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* Navbar user badge */
+    .user-badge {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,230,118,0.08);
+      border: 1px solid rgba(0,230,118,0.25);
+      border-radius: 5px;
+      padding: 6px 14px;
+      font-family: var(--fb);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--g);
+    }
+
+    .logout-btn {
+      background: transparent;
+      border: 1px solid var(--bdr2);
+      color: var(--mute);
+      font-family: var(--fb);
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .logout-btn:hover { border-color: #ef4444; color: #ef4444; }
+
+    @media (max-width: 767px) {
+      .auth-box { margin: 1rem; padding: 2rem 1.4rem; }
+    }
+
+    @media (max-width: 767px) {
+      .hero { min-height: 360px; }
+      .hero-img { opacity: .12; }
+      .sp, .sp-s { padding: 3rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Auth Overlay ──────────────────────────────────────────── -->
+  <div id="authOverlay">
+    <div class="auth-box">
+      <div class="auth-logo">EASY<span class="g">PC</span></div>
+      <div class="auth-subtitle">#1 Online PC Store Philippines</div>
+
+      <!-- Tabs -->
+      <div class="auth-tab-btns">
+        <button class="auth-tab-btn active" id="tabLogin" onclick="switchTab('login')">Login</button>
+        <button class="auth-tab-btn" id="tabRegister" onclick="switchTab('register')">Register</button>
+      </div>
+
+      <!-- Login Form -->
+      <div id="loginForm">
+        <div class="auth-field">
+          <label>Email Address</label>
+          <input type="email" id="loginEmail" placeholder="you@email.com" autocomplete="email"/>
+        </div>
+        <div class="auth-field">
+          <label>Password</label>
+          <input type="password" id="loginPass" placeholder="Enter your password"/>
+        </div>
+        <div class="auth-err" id="loginErr"></div>
+        <button class="auth-btn" onclick="doLogin()">Login &amp; Enter Store</button>
+        <div style="text-align:center;margin-top:1rem;font-size:0.78rem;color:var(--mute);font-family:var(--fb)">
+          No account? <span style="color:var(--g);cursor:pointer;font-weight:700" onclick="switchTab('register')">Register here</span>
+        </div>
+      </div>
+
+      <!-- Register Form -->
+      <div id="registerForm" style="display:none">
+        <div class="auth-field">
+          <label>Full Name</label>
+          <input type="text" id="regName" placeholder="Juan dela Cruz"/>
+        </div>
+        <div class="auth-field">
+          <label>Email Address</label>
+          <input type="email" id="regEmail" placeholder="you@email.com" autocomplete="email"/>
+        </div>
+        <div class="auth-field">
+          <label>Password</label>
+          <input type="password" id="regPass" placeholder="At least 6 characters"/>
+        </div>
+        <div class="auth-field">
+          <label>Confirm Password</label>
+          <input type="password" id="regPass2" placeholder="Repeat password"/>
+        </div>
+        <div class="auth-err" id="regErr"></div>
+        <div class="auth-ok" id="regOk"></div>
+        <button class="auth-btn" onclick="doRegister()">Create Account</button>
+        <div style="text-align:center;margin-top:1rem;font-size:0.78rem;color:var(--mute);font-family:var(--fb)">
+          Already have an account? <span style="color:var(--g);cursor:pointer;font-weight:700" onclick="switchTab('login')">Login</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ── /Auth Overlay ─────────────────────────────────────────── -->
+
+  <div class="topbar">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center flex-wrap gap-1">
+        <div>
+          <i class="bi bi-truck me-1"></i>Free Shipping ₱5,000+
+          <span class="sep">|</span>
+          <i class="bi bi-shield-check me-1"></i>EASYFIX Warranty
+          <span class="sep d-none d-md-inline">|</span>
+          <span class="d-none d-md-inline"><i class="bi bi-credit-card me-1"></i>0% Installment Available</span>
+        </div>
+        <div class="d-flex gap-3">
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">EASY<span class="g">PC</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#nb">
+        <i class="bi bi-list fs-4" style="color:var(--txt)"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="nb">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Shop</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-laptop"></i>Laptops</a></li>
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-gpu-card"></i>Graphics Cards</a></li>
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-cpu"></i>Processors</a></li>
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-memory"></i>Memory / RAM</a></li>
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-device-hdd"></i>Storage</a></li>
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-display"></i>Monitors</a></li>
+              <li><a class="dropdown-item" href="#shop"><i class="bi bi-keyboard"></i>Peripherals</a></li>
+            </ul>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="#build">Build PC</a></li>
+          <li class="nav-item"><a class="nav-link" href="#brands">Brands</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+          <div class="srch-wrap">
+            <input type="search" placeholder="Search products, specs…" id="si"/>
+            <button class="srch-btn"><i class="bi bi-search"></i></button>
+          </div>
+          <div class="user-badge" id="navUserBadge" style="display:none">
+            <i class="bi bi-person-circle"></i>
+            <span id="navUserName"></span>
+          </div>
+          <button class="logout-btn" id="navLogoutBtn" style="display:none" onclick="doLogout()">
+            <i class="bi bi-box-arrow-right me-1"></i>Logout
+          </button>
+          <button class="cart-ico" data-bs-toggle="offcanvas" data-bs-target="#cartDrawer">
+            <i class="bi bi-cart3"></i>
+            <span class="c-badge" id="cb">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div id="hc" class="carousel" data-bs-ride="false">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#hc" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#hc" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#hc" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner">
+
+      <div class="carousel-item active">
+        <div class="hero">
+          <div class="hero-mesh"></div>
+          <div class="hero-grid"></div>
+          <div class="hero-corner tl"></div>
+          <div class="hero-corner br"></div>
+          <div class="hero-img"><img id="h1img" alt="MSI Cyborg 15"/></div>
+          <div class="container">
+            <div class="hero-body">
+              <div class="hero-tag">🔥 Flash Sale — Limited Stocks</div>
+              <h1 class="hero-h">MSI Cyborg 15<br><span class="g">Up to ₱10,000 OFF</span></h1>
+              <div class="hero-price">Starting at ₱45,995</div>
+              <p class="hero-sub">RTX 4050 · 144Hz FHD IPS · 12th Gen Intel Core i7 — Power that moves with you.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <a href="#shop" class="btn-g">Shop Laptops</a>
+                <a href="#build" class="btn-og">Build a PC</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="hero">
+          <div class="hero-mesh"></div>
+          <div class="hero-grid"></div>
+          <div class="hero-corner tl"></div>
+          <div class="hero-corner br"></div>
+          <div class="hero-img"><img id="h2img" alt="RTX 4060 Ti"/></div>
+          <div class="container">
+            <div class="hero-body">
+              <div class="hero-tag">🆕 New Arrival</div>
+              <h1 class="hero-h">RTX 4060 Ti 8GB<br><span class="g">Now In Stock!</span></h1>
+              <div class="hero-price">Starting at ₱22,995</div>
+              <p class="hero-sub">DLSS 3 · Ada Lovelace Architecture · Dominate 1440p gaming — only at EasyPC.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <a href="#shop" class="btn-g">Shop GPUs</a>
+                <a href="#build" class="btn-og">Custom Build</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="hero">
+          <div class="hero-mesh"></div>
+          <div class="hero-grid"></div>
+          <div class="hero-corner tl"></div>
+          <div class="hero-corner br"></div>
+          <div class="hero-img"><img id="h3img" alt="AMD Ryzen"/></div>
+          <div class="container">
+            <div class="hero-body">
+              <div class="hero-tag">🛠️ PC Builder</div>
+              <h1 class="hero-h">Build Your<br><span class="g">Dream Gaming PC</span></h1>
+              <div class="hero-price">Budget · Mid-Range · High-End</div>
+              <p class="hero-sub">Compatible parts · Expert guidance · Best prices guaranteed in the Philippines.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <a href="#build" class="btn-g">Start Building</a>
+                <a href="#brands" class="btn-og">Browse Brands</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#hc" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#hc" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <div class="tick-i"><span class="dot">▶</span>Free Nationwide Shipping ₱5,000+</div>
+      <div class="tick-i"><span class="dot">▶</span>EASYFIX Palit Agad Warranty</div>
+      <div class="tick-i"><span class="dot">▶</span>0% Installment — BDO · BPI · Metrobank</div>
+      <div class="tick-i"><span class="dot">▶</span>Cash on Delivery Available</div>
+      <div class="tick-i"><span class="dot">▶</span>#1 Online PC Store Philippines</div>
+      <div class="tick-i"><span class="dot">▶</span>Same Day Processing</div>
+      <div class="tick-i"><span class="dot">▶</span>100% Authentic Products</div>
+    </div>
+  </div>
+
+  <section class="sp" style="background:var(--bg)">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="lbl">Browse By</div>
+        <div class="stitle">Shop by Category</div>
+      </div>
+      <div class="row g-3 row-cols-3 row-cols-md-4 row-cols-lg-7" id="catGrid"></div>
+    </div>
+  </section>
+
+  <section class="new-arr-strip" id="newarrivals">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end mb-3 flex-wrap gap-2">
+        <div>
+          <div class="lbl">Just Landed</div>
+          <div class="stitle">New Arrivals</div>
+        </div>
+        <a href="#shop" class="btn-og" style="font-size:.75rem;padding:8px 20px">View All Products</a>
+      </div>
+      <div class="row g-3" id="naGrid"></div>
+    </div>
+  </section>
+
+  <section class="sp" style="background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)" id="shop">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-end flex-wrap gap-3 mb-4">
+        <div>
+          <div class="lbl">Hand Picked</div>
+          <div class="stitle">Featured Products</div>
+        </div>
+        <div class="d-flex gap-2 flex-wrap" id="fbtns">
+          <button class="fbtn act" onclick="fp('all',this)">ALL</button>
+          <button class="fbtn" onclick="fp('laptop',this)">LAPTOPS</button>
+          <button class="fbtn" onclick="fp('gpu',this)">GPU</button>
+          <button class="fbtn" onclick="fp('cpu',this)">CPU</button>
+          <button class="fbtn" onclick="fp('monitor',this)">MONITORS</button>
+          <button class="fbtn" onclick="fp('storage',this)">STORAGE</button>
+          <button class="fbtn" onclick="fp('peripheral',this)">PERIPHERALS</button>
+        </div>
+      </div>
+      <div class="row g-3" id="pgrid"></div>
+    </div>
+  </section>
+
+  <section class="sp" style="background:var(--bg)" id="build">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="lbl">PC Builder</div>
+        <div class="stitle">Build Your Custom Dream PC</div>
+      </div>
+      <div class="build-wrap">
+
+        <div class="build-l">
+          <div class="lbl mb-2">PC Builder Tool</div>
+          <h2 class="build-h">Configure Your<br><span class="g">Perfect Build</span></h2>
+          <p style="color:var(--mute);max-width:380px;line-height:1.8;font-size:.9rem;margin-bottom:.5rem">
+            Pick compatible components within your budget. From ₱15K entry builds to ₱200K workstations — EasyPC has every part you need.
+          </p>
+          <div id="compatBadge"></div>
+          <div class="build-preview">
+            <img id="buildPreviewImg" src="" alt="Selected Component" style="display:none"/>
+            <div class="no-preview" id="buildNoPreview">
+              <div style="font-size:2.5rem;margin-bottom:.5rem">🖥️</div>
+              <div>Select components to<br>preview your build</div>
+            </div>
+          </div>
+          <div class="build-preset-btns">
+            <span style="font-size:.65rem;color:var(--mute);font-family:var(--fb);letter-spacing:.1em;text-transform:uppercase;align-self:center">Presets:</span>
+            <button class="preset-btn" id="pb-entry" onclick="loadPreset('entry',this)">Entry ₱25K</button>
+            <button class="preset-btn" id="pb-mid" onclick="loadPreset('mid',this)">Mid-Range ₱56K</button>
+            <button class="preset-btn" id="pb-high" onclick="loadPreset('high',this)">High-End ₱105K</button>
+            <button class="preset-btn" style="margin-left:auto" onclick="loadPreset('clear',this)">Clear All</button>
+          </div>
+        </div>
+
+        <div class="build-r">
+          <div class="lbl mb-3" id="buildLabel">Configure Your Build</div>
+          <div id="builderRows"></div>
+          <div class="build-total">
+            <span class="build-total-lbl">Total Build Cost</span>
+            <span class="build-total-val" id="buildTotal">₱0</span>
+          </div>
+          <div class="build-actions">
+            <button class="btn-build-cart" id="btnAddBuild" onclick="addBuildToCart()" disabled>
+              <i class="bi bi-cart-plus me-1"></i>Add All to Cart
+            </button>
+            <button class="btn-build-save" onclick="shareBuild()">
+              <i class="bi bi-share me-1"></i>Share
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="sp" style="background:var(--bg2);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)" id="brands">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="lbl">Authorized Reseller</div>
+        <div class="stitle">Top Brands We Carry</div>
+      </div>
+      <div class="row g-2 row-cols-4 row-cols-md-6 row-cols-lg-8" id="brandGrid"></div>
+    </div>
+  </section>
+
+  <section class="sp" style="background:var(--bg)">
+    <div class="container">
+      <div class="text-center mb-4">
+        <div class="lbl">Why Choose Us</div>
+        <div class="stitle">The EasyPC Advantage</div>
+      </div>
+      <div class="row g-3 row-cols-1 row-cols-md-2 row-cols-lg-4">
+        <div class="col">
+          <div class="perk">
+            <span class="perk-ico">🛡️</span>
+            <div class="perk-t">EASYFIX Warranty</div>
+            <p class="perk-d">Palit agad on all products. No-hassle returns, no questions asked.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="perk">
+            <span class="perk-ico">🚀</span>
+            <div class="perk-t">Fast Nationwide Delivery</div>
+            <p class="perk-d">4-hour express in Metro Manila. Nationwide via trusted couriers with tracking.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="perk">
+            <span class="perk-ico">💯</span>
+            <div class="perk-t">100% Authentic</div>
+            <p class="perk-d">Sourced directly from official brand distributors. Zero fakes, ever.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="perk">
+            <span class="perk-ico">🏆</span>
+            <div class="perk-t">Trusted Since 2006</div>
+            <p class="perk-d">1.3M+ happy customers. 5 stores across Metro Manila and growing.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="nl">
+    <div class="container">
+      <div class="row align-items-center gy-4">
+        <div class="col-md-6">
+          <div class="nl-h">Get <span class="g">Exclusive Deals</span> First</div>
+          <p class="nl-s mt-2 mb-0">Subscribe for flash sales, new arrivals, and member-only promos.</p>
+        </div>
+        <div class="col-md-6">
+          <div class="d-flex">
+            <input type="email" id="nlEmail" placeholder="Enter your email address…"/>
+            <button class="nl-btn" onclick="nlSubscribe()">Subscribe</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer id="contact">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-4">
+          <div class="ft-brand">EASY<span class="g">PC</span></div>
+          <div class="ft-tag">Philippines #1 Online PC Store Since 2006</div>
+          <p class="ft-p">Serving Filipino gamers, students, and professionals with authentic products, unbeatable prices, and the best after-sales support in the country.</p>
+          <div class="d-flex gap-2 mt-3">
+            <a href="#" class="soc"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="soc"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="soc"><i class="bi bi-youtube"></i></a>
+            <a href="#" class="soc"><i class="bi bi-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="ft-h">Shop</div>
+          <ul class="ft-ul">
+            <li><a href="#shop">Laptops</a></li>
+            <li><a href="#shop">Graphics Cards</a></li>
+            <li><a href="#shop">Processors</a></li>
+            <li><a href="#shop">Monitors</a></li>
+            <li><a href="#shop">Peripherals</a></li>
+            <li><a href="#shop">Storage / SSD</a></li>
+            <li><a href="#shop">RAM / Memory</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-lg-2">
+          <div class="ft-h">Support</div>
+          <ul class="ft-ul">
+            <li><a href="#">EASYFIX Warranty</a></li>
+            <li><a href="#">Track My Order</a></li>
+            <li><a href="#">Returns &amp; Refunds</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Live Chat</a></li>
+          </ul>
+        </div>
+        <div class="col-lg-4">
+          <div class="ft-h">Stores &amp; Contact</div>
+          <ul class="ft-ul">
+            <li><i class="bi bi-geo-alt"></i><span>SM North EDSA, Quezon City</span></li>
+            <li><i class="bi bi-geo-alt"></i><span>SM Megamall, Mandaluyong</span></li>
+            <li><i class="bi bi-geo-alt"></i><span>SM City Manila, Manila</span></li>
+            <li><i class="bi bi-envelope"></i><span>support@easypc.com.ph</span></li>
+            <li><i class="bi bi-telephone"></i><span>(02) 8888-EASY</span></li>
+          </ul>
+          <div class="mt-3">
+            <div class="ft-h">We Accept</div>
+            <div class="d-flex gap-2 flex-wrap mt-1">
+              <span class="pay-tag">💳 Credit Card</span>
+              <span class="pay-tag">📱 GCash</span>
+              <span class="pay-tag">🏦 Bank Transfer</span>
+              <span class="pay-tag">💵 COD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="ft-hr"/>
+      <div class="d-flex justify-content-between flex-wrap gap-2">
+        <div class="ft-copy">© 2025 EasyPC Philippines · All Rights Reserved</div>
+        <div class="ft-copy">
+          <a href="#" style="color:inherit;margin-right:1rem">Privacy Policy</a>
+          <a href="#" style="color:inherit">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="cartDrawer">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title"><i class="bi bi-cart3 me-2" style="color:var(--g)"></i>My Cart</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body d-flex flex-column" style="background:var(--bg2)">
+      <div id="cartItems" class="flex-grow-1"></div>
+      <div id="cartFoot" style="display:none;border-top:1px solid var(--bdr);padding-top:1rem;margin-top:1rem">
+        <div class="d-flex justify-content-between mb-3">
+          <span class="c-total-lbl">Total</span>
+          <span class="c-total-val" id="ct">₱0</span>
+        </div>
+        <button class="btn-place" onclick="checkout()">Place Order</button>
+        <button class="btn-clr" onclick="clearCart()">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toasts"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    function loadImg(el, src, fallback) {
+      if (!el) return;
+      const i = new Image();
+      i.onload  = () => { el.src = src; };
+      i.onerror = () => { el.src = fallback; };
+      i.src = src;
+    }
+
+    const prods = [
+      { id:1,  nm:'MSI Cyborg 15 A12VF',              cat:'laptop',    bdg:'SALE', bt:'sale',
+        src:'cyborg.png',
+        fb:'../laptop.png',
+        spec:'i7-12650H · 16GB DDR5 · 512GB NVMe · RTX 4050 6GB · 144Hz FHD',
+        px:63995, op:70995, rt:5, rv:241, stk:'In Stock', isNew:false },
+
+      { id:2,  nm:'ASUS TUF Gaming F15',               cat:'laptop',    bdg:'HOT',  bt:'hot',
+        src:'tuf gaming.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=ASUS+TUF+F15',
+        spec:'i5-11400H · 8GB RAM · 512GB SSD · RTX 3050 Ti · 144Hz',
+        px:47995, op:52995, rt:4, rv:158, stk:'In Stock', isNew:false },
+
+      { id:3,  nm:'Lenovo LOQ 15IRX9',                 cat:'laptop',    bdg:'NEW',  bt:'new',
+        src:'lenovo.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=Lenovo+LOQ+15',
+        spec:'i5-13450HX · 16GB DDR5 · 512GB · RTX 4060 8GB · 144Hz FHD',
+        px:59995, op:null, rt:5, rv:89, stk:'Low Stock (2)', isNew:true },
+
+      { id:4,  nm:'MSI GeForce RTX 4060 Ti 8GB',       cat:'gpu',       bdg:'NEW',  bt:'new',
+        src:'gpu.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=RTX+4060+Ti',
+        spec:'8GB GDDR6 · DLSS 3 · Ada Lovelace · PCIe 4.0 · 128-bit',
+        px:22995, op:null, rt:5, rv:312, stk:'In Stock', isNew:true },
+
+      { id:5,  nm:'MSI Mech RX 6600 XT 8G',            cat:'gpu',       bdg:'SALE', bt:'sale',
+        src:'rx 6600.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=RX+6600+XT',
+        spec:'8GB GDDR6 · FreeSync Premium · PCIe 4.0 · 128-bit',
+        px:13995, op:15500, rt:4, rv:174, stk:'In Stock', isNew:false },
+
+      { id:6,  nm:'Intel Core i7-13700K',               cat:'cpu',       bdg:'HOT',  bt:'hot',
+        src:'i7.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=Intel+i7-13700K',
+        spec:'16 Cores · 20 Threads · 5.4GHz Boost · LGA1700 · 125W',
+        px:23995, op:null, rt:5, rv:203, stk:'In Stock', isNew:false },
+
+      { id:7,  nm:'AMD Ryzen 5 7600X',                  cat:'cpu',       bdg:null,   bt:'',
+        src:'amd ryzen.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=AMD+Ryzen+5+7600X',
+        spec:'6 Cores · 12 Threads · 4.7GHz Boost · AM5 Socket · 105W',
+        px:13995, op:15500, rt:5, rv:267, stk:'In Stock', isNew:false },
+
+      { id:8,  nm:'ASUS TUF VG27AQ1A 27" QHD',          cat:'monitor',   bdg:'NEW',  bt:'new',
+        src:'asus.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=ASUS+TUF+Monitor',
+        spec:'27" · 165Hz · 2560×1440 QHD · IPS · G-Sync Compatible',
+        px:16995, op:18995, rt:5, rv:134, stk:'In Stock', isNew:true },
+
+      { id:9,  nm:'MSI Optix MAG274QRF 27"',             cat:'monitor',   bdg:'SALE', bt:'sale',
+        src:'optix.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=MSI+Optix+Monitor',
+        spec:'27" · 165Hz · QHD 2560×1440 · IPS · 1ms · FreeSync Premium',
+        px:14995, op:17995, rt:4, rv:98, stk:'In Stock', isNew:false },
+
+      { id:10, nm:'Samsung 990 Pro 2TB NVMe',            cat:'storage',   bdg:'FAST', bt:'fast',
+        src:'ssdd.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=Samsung+990+Pro',
+        spec:'2TB · PCIe Gen4 · 7450MB/s Read · M.2 2280 · 5Y Warranty',
+        px:6995, op:null, rt:5, rv:421, stk:'In Stock', isNew:true },
+
+      { id:11, nm:'Seagate BarraCuda 2TB HDD',           cat:'storage',   bdg:null,   bt:'',
+        src:'seagate.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=Seagate+2TB+HDD',
+        spec:'2TB · SATA 6Gb/s · 7200RPM · 256MB Cache · 3.5"',
+        px:3295, op:null, rt:4, rv:189, stk:'In Stock', isNew:false },
+
+      { id:12, nm:'Logitech G502 X Plus Wireless',       cat:'peripheral', bdg:null,  bt:'',
+        src:'logitech 502.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=Logitech+G502+X',
+        spec:'25,600 DPI · LIGHTFORCE Hybrid Switch · LIGHTSPEED Wireless · 89g',
+        px:5495, op:5995, rt:5, rv:198, stk:'In Stock', isNew:false },
+
+      { id:13, nm:'Corsair Vengeance 32GB DDR5 6000',    cat:'ram',       bdg:'NEW',  bt:'new',
+        src:'veangance.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=Corsair+DDR5',
+        spec:'32GB (2×16GB) · DDR5 · 6000MHz · CL36 · Intel XMP 3.0',
+        px:8995, op:9995, rt:5, rv:76, stk:'In Stock', isNew:true },
+
+      { id:14, nm:'ASUS ROG Strix B760-F Gaming',        cat:'mobo',      bdg:'NEW',  bt:'new',
+        src:'rog.png',
+        fb:'https://placehold.co/300x200/0d130d/00e676?text=ROG+B760-F',
+        spec:'LGA1700 · DDR5 · PCIe 5.0 · WiFi 6E · USB 3.2 Gen2 · ATX',
+        px:12995, op:null, rt:5, rv:54, stk:'In Stock', isNew:true },
+    ];
+
+    const cats = [
+      { 
+        n:'Laptops',
+        cat:'laptop',
+        src:'laptop.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },
+      { 
+        n:'GPU',
+        cat:'GPU',
+        src:'gpu.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },
+      { 
+        n:'CPU',
+        cat:'CPU',
+        src:'cpu.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },
+      { 
+        n:'RAM',
+        cat:'RAM',
+        src:'ram.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },
+      { 
+        n:'MONITOR',
+        cat:'MONITOR',
+        src:'monitor.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },
+      { 
+        n:'STORAGE',
+        cat:'SSD',
+        src:'ssd.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },
+      { 
+        n:'PERIPHERALS',
+        cat:'PERIPHERALS',
+        src:'keyboard.png',
+        fb:'https://placehold.co/60x60/0d130d/00e676?text=💻'
+      },                                                                               
+    ];
+
+    const brands = [
+      { n:'MSI',      src:'msi.png'},
+      { n:'ASUS',     src:'asus logo.png' },
+      { n:'Gigabyte', src:'gigabyte.png' },
+      { n:'Intel',    src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/Intel_logo_%282006-2020%29.svg/200px-Intel_logo_%282006-2020%29.svg.png' },
+      { n:'AMD',      src:'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7c/AMD_Logo.svg/200px-AMD_Logo.svg.png' },
+      { n:'Corsair',  src:'corsair.png' },
+      { n:'Samsung',  src:'samsungsss.png' },
+      { n:'NVIDIA',       src:'nvidia.png'},
+      { n:'Logitech', src:'Logitech_logo.png' },
+      { n:'Seagate',  src:'seagatee.png' },
+      { n:'Lenovo',   src:'lenovos.png' },
+      { n:'Kingston', src:'kingston.png' },
+    ];
+
+    loadImg(document.getElementById('h1img'),
+      'cyborg.png',
+      'https://placehold.co/540x380/0a0f0a/00e676?text=MSI+Cyborg+15');
+    loadImg(document.getElementById('h2img'),
+      'gpu.png',
+      'https://placehold.co/540x380/0a0f0a/00e676?text=RTX+4060+Ti');
+    loadImg(document.getElementById('h3img'),
+      'amd ryzen.png',
+      'https://placehold.co/540x380/0a0f0a/00e676?text=AMD+Ryzen+7600X');
+
+    const catGrid = document.getElementById('catGrid');
+    cats.forEach(c => {
+      const col = document.createElement('div');
+      col.className = 'col';
+      col.innerHTML = `<a href="#shop" class="cat-c" onclick="filterByCat('${c.cat}')"><img id="ci_${c.cat}" alt="${c.n}" class="cat-img" width="60" height="60"/><div class="cat-n">${c.n}</div></a>`;
+      catGrid.appendChild(col);
+      loadImg(document.getElementById('ci_' + c.cat), c.src, c.fb);
+    });
+
+    function filterByCat(cat) {
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('act'));
+      const btn = [...document.querySelectorAll('.fbtn')].find(b =>
+        b.textContent.toLowerCase() === cat ||
+        (cat === 'peripheral' && b.textContent.toLowerCase() === 'peripherals') ||
+        (cat === 'monitor'    && b.textContent.toLowerCase() === 'monitors') ||
+        (cat === 'laptop'     && b.textContent.toLowerCase() === 'laptops')
+      );
+      if (btn) btn.classList.add('act');
+      renderProds(cat);
+    }
+
+    const brandGrid = document.getElementById('brandGrid');
+    brands.forEach(b => {
+      const col = document.createElement('div');
+      col.className = 'col';
+      col.innerHTML = `<div class="brand-box"><img src="${b.src}" alt="${b.n}" onerror="this.src='https://placehold.co/88x32/0d130d/4a7a52?text=${b.n}'"/></div>`;
+      brandGrid.appendChild(col);
+    });
+
+    function renderNewArrivals() {
+      const newProds = prods.filter(p => p.isNew);
+      const grid = document.getElementById('naGrid');
+      grid.innerHTML = newProds.map(p => `
+        <div class="col-12 col-md-6 col-lg-4 col-xl-3">
+          <div class="na-card">
+            <span class="na-badge">NEW</span>
+            <img class="na-img" id="na_${p.id}" alt="${p.nm}"/>
+            <div class="na-info">
+              <div class="na-cat">${p.cat.toUpperCase()}</div>
+              <div class="na-name">${p.nm}</div>
+              <div class="d-flex align-items-center gap-1">
+                ${p.op ? `<span class="na-old">₱${p.op.toLocaleString()}</span>` : ''}
+                <span class="na-price">₱${p.px.toLocaleString()}</span>
+              </div>
+            </div>
+            <button class="na-btn" onclick="addToCart(${p.id})"><i class="bi bi-cart-plus"></i></button>
+          </div>
+        </div>
+      `).join('');
+      newProds.forEach(p => loadImg(document.getElementById('na_' + p.id), p.src, p.fb));
+    }
+    renderNewArrivals();
+
+    function stars(r) {
+      return '<span class="s">' + '★'.repeat(r) + '</span><span class="e">' + '☆'.repeat(5 - r) + '</span>';
+    }
+
+    function cardHTML(p) {
+      return `
+        <div class="col-6 col-md-4 col-xl-3">
+          <div class="pc">
+            ${p.bdg ? `<div class="pbadge ${p.bt}">${p.bdg}</div>` : ''}
+            <div class="pimg">
+              <img id="pi_${p.id}" alt="${p.nm}" style="max-height:155px;max-width:100%;object-fit:contain"/>
+            </div>
+            <div class="pbody">
+              <div class="pcat">${p.cat.toUpperCase()}</div>
+              <div class="pname">${p.nm}</div>
+              <div class="pspec">${p.spec}</div>
+              <div class="pstars">${stars(p.rt)}<span class="cnt">(${p.rv})</span></div>
+              <div class="mt-auto">
+                ${p.op ? `<div class="orig">₱${p.op.toLocaleString()}</div>` : ''}
+                <div class="price">₱${p.px.toLocaleString()}</div>
+                <div class="stk ${p.stk.includes('Low') ? 'n' : 'y'} mt-1">
+                  ${p.stk.includes('Low') ? '⚠️ ' + p.stk : '✓ ' + p.stk}
+                </div>
+              </div>
+            </div>
+            <div class="pfoot">
+              <button class="btn-cart" onclick="addToCart(${p.id})">Add to Cart</button>
+              <button class="btn-wish" id="wish_${p.id}" onclick="toggleWish(${p.id},this)"><i class="bi bi-heart"></i></button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderProds(filter) {
+      const list = filter === 'all' ? prods : prods.filter(p => p.cat === filter);
+      const grid = document.getElementById('pgrid');
+      grid.innerHTML = list.length
+        ? list.map(cardHTML).join('')
+        : `<div class="col-12 text-center py-5" style="color:var(--mute)"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><div style="font-family:var(--fb);font-size:1.1rem">No products found</div></div>`;
+      list.forEach(p => loadImg(document.getElementById('pi_' + p.id), p.src, p.fb));
+    }
+
+    function fp(cat, btn) {
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('act'));
+      btn.classList.add('act');
+      renderProds(cat);
+    }
+
+    renderProds('all');
+
+    let wishlist = new Set();
+    function toggleWish(id, btn) {
+      if (wishlist.has(id)) {
+        wishlist.delete(id);
+        btn.classList.remove('wished');
+        btn.innerHTML = '<i class="bi bi-heart"></i>';
+        showToast('Removed from wishlist');
+      } else {
+        wishlist.add(id);
+        btn.classList.add('wished');
+        btn.innerHTML = '<i class="bi bi-heart-fill"></i>';
+        showToast('❤️ Added to wishlist!');
+      }
+    }
+
+    let cart = [];
+
+    function addToCart(id) {
+      const p = prods.find(x => x.id === id);
+      if (!p) return;
+      const ex = cart.find(x => x.id === id);
+      if (ex) ex.qty++;
+      else cart.push({ id: p.id, nm: p.nm, px: p.px, src: p.src, fb: p.fb, qty: 1 });
+      updateCart();
+      showToast('✓ ' + p.nm + ' added to cart!');
+    }
+
+    function updateCart() {
+      const total = cart.reduce((s, i) => s + i.px * i.qty, 0);
+      const count = cart.reduce((s, i) => s + i.qty, 0);
+      document.getElementById('cb').textContent = count;
+      document.getElementById('ct').textContent = '₱' + total.toLocaleString();
+      const el = document.getElementById('cartItems');
+      const ft = document.getElementById('cartFoot');
+      if (!cart.length) {
+        ft.style.display = 'none';
+        el.innerHTML = `
+          <div class="text-center py-5">
+            <div style="font-size:3.5rem;margin-bottom:1rem">🛒</div>
+            <div style="font-family:var(--fb);font-size:1.1rem;color:var(--wht)">Your cart is empty</div>
+            <div style="font-size:.82rem;color:var(--mute);margin-top:.4rem">Browse products and add items!</div>
+          </div>`;
+      } else {
+        ft.style.display = 'block';
+        el.innerHTML = cart.map(item => `
+          <div class="c-row">
+            <div class="d-flex align-items-start gap-2">
+              <img id="ci${item.id}" alt="${item.nm}" style="width:54px;height:54px;object-fit:contain;background:var(--card2);border-radius:5px;padding:4px;flex-shrink:0"/>
+              <div class="flex-grow-1">
+                <div class="c-nm">${item.nm}</div>
+                <div class="c-px">₱${item.px.toLocaleString()}</div>
+                <div class="d-flex align-items-center gap-2 mt-1">
+                  <button class="q-btn" onclick="chgQty(${item.id},-1)">−</button>
+                  <span style="font-family:var(--fb);font-weight:700;color:var(--wht);min-width:18px;text-align:center">${item.qty}</span>
+                  <button class="q-btn" onclick="chgQty(${item.id},1)">+</button>
+                  <button onclick="rmItem(${item.id})" style="background:transparent;border:none;color:#ef4444;font-size:.74rem;cursor:pointer;margin-left:4px">Remove</button>
+                </div>
+              </div>
+              <div style="font-family:var(--fh);font-weight:700;font-size:.9rem;color:var(--g);white-space:nowrap">₱${(item.px * item.qty).toLocaleString()}</div>
+            </div>
+          </div>`).join('');
+        cart.forEach(item => {
+          const img = document.getElementById('ci' + item.id);
+          if (img) loadImg(img, item.src, item.fb);
+        });
+      }
+    }
+
+    function chgQty(id, d) {
+      const i = cart.find(x => x.id === id);
+      if (i) { i.qty += d; if (i.qty <= 0) rmItem(id); else updateCart(); }
+    }
+
+    function rmItem(id) { cart = cart.filter(x => x.id !== id); updateCart(); }
+    function clearCart() { cart = []; updateCart(); }
+
+    function checkout() {
+      clearCart();
+      bootstrap.Offcanvas.getInstance(document.getElementById('cartDrawer')).hide();
+      showToast('🎉 Order placed! Thank you for shopping at EasyPC!');
+    }
+
+    document.getElementById('si').addEventListener('input', function () {
+      const q = this.value.toLowerCase().trim();
+      const list = q
+        ? prods.filter(p => p.nm.toLowerCase().includes(q) || p.spec.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q))
+        : prods;
+      const grid = document.getElementById('pgrid');
+      grid.innerHTML = list.length
+        ? list.map(cardHTML).join('')
+        : `<div class="col-12 text-center py-5" style="color:var(--mute)"><div style="font-size:3rem;margin-bottom:1rem">🔍</div><div style="font-family:var(--fb);font-size:1.1rem">No results for "${q}"</div></div>`;
+      list.forEach(p => loadImg(document.getElementById('pi_' + p.id), p.src, p.fb));
+      if (q) document.getElementById('shop').scrollIntoView({ behavior: 'smooth' });
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('act'));
+      if (!q) document.querySelector('.fbtn').classList.add('act');
+    });
+
+    function nlSubscribe() {
+      const input = document.getElementById('nlEmail');
+      if (!input.value || !input.value.includes('@')) {
+        showToast('⚠️ Please enter a valid email address.');
+        return;
+      }
+      showToast('✓ Subscribed! Check your inbox for a confirmation email.');
+      input.value = '';
+    }
+
+    function showToast(msg) {
+      const box = document.getElementById('toasts');
+      const t = document.createElement('div');
+      t.className = 'toast-p';
+      t.innerHTML = `<i class="bi bi-check-circle-fill" style="color:var(--g)"></i>${msg}`;
+      box.appendChild(t);
+      setTimeout(() => {
+        t.style.animation = 'tin .3s ease reverse both';
+        setTimeout(() => t.remove(), 300);
+      }, 3000);
+    }
+
+    const buildComponents = {
+      cpu: {
+        label: 'Processor', icon: '🧠',
+        options: [
+          { id:'cpu1', name:'Intel Core i7-13700K',  spec:'16C/20T · 5.4GHz · LGA1700 · 125W', price:23995, img:'i7.png',                                                                                              fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CPU' },
+          { id:'cpu2', name:'Intel Core i5-13600K',  spec:'14C/20T · 5.1GHz · LGA1700 · 125W', price:16995, img:'i5.png',                                                                                              fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CPU' },
+          { id:'cpu3', name:'AMD Ryzen 5 7600X',     spec:'6C/12T · 5.3GHz · AM5 · 105W',      price:13995, img:'amd ryzen.png',                                                                                                                                                fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CPU' },
+          { id:'cpu4', name:'AMD Ryzen 9 7950X',     spec:'16C/32T · 5.7GHz · AM5 · 170W',     price:39995, img:'r9.png',                                                                                                                                                fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CPU' },
+          { id:'cpu5', name:'Intel Core i3-12100F',  spec:'4C/8T · 4.3GHz · LGA1700 · 65W',    price:6995,  img:'i3.png',                                                                                              fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CPU' },
+        ]
+      },
+      gpu: {
+        label: 'Graphics Card', icon: '🎮',
+        options: [
+          { id:'gpu1', name:'MSI GeForce RTX 4060 Ti 8GB', spec:'8GB GDDR6 · DLSS 3 · Ada Lovelace',       price:22995, img:'4060 ti.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=GPU' },
+          { id:'gpu2', name:'MSI Mech RX 6600 XT 8G',      spec:'8GB GDDR6 · FreeSync · PCIe 4.0',          price:13995, img:'rx 6600.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=GPU' },
+          { id:'gpu3', name:'ASUS RTX 4070 TUF 12GB',       spec:'12GB GDDR6X · DLSS 3 · 192-bit',           price:44995, img:'4070.png',                                                              fb:'https://placehold.co/44x44/0a0f0a/00e676?text=GPU' },
+          { id:'gpu4', name:'MSI RX 7900 XTX 24G',          spec:'24GB GDDR6 · RDNA 3 · PCIe 4.0',           price:64995, img:'rx 7900.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=GPU' },
+        ]
+      },
+      ram: {
+        label: 'Memory (RAM)', icon: '💾',
+        options: [
+          { id:'ram1', name:'Corsair 16GB DDR5 5200 (2×8)',     spec:'DDR5 · 5200MHz · CL38 · Vengeance',       price:4295, img:'veangance.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=RAM' },
+          { id:'ram2', name:'Kingston 32GB DDR4 3200 (2×16)',   spec:'DDR4 · 3200MHz · CL16 · Fury Beast',      price:3995, img:'kingston 32.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=RAM' },
+          { id:'ram3', name:'G.Skill 32GB DDR5 6000 (2×16)',    spec:'DDR5 · 6000MHz · CL30 · Trident Z5',     price:8995, img:'trident.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=RAM' },
+          { id:'ram4', name:'Kingston 8GB DDR4 2666',           spec:'DDR4 · 2666MHz · CL16 · ValueRAM',        price:1595, img:'kingston 8g.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=RAM' },
+        ]
+      },
+      storage: {
+        label: 'Storage (SSD)', icon: '💿',
+        options: [
+          { id:'ssd1', name:'Samsung 990 Pro 1TB NVMe', spec:'PCIe Gen4 · 7450MB/s Read · M.2 2280', price:4495, img:'vnan1.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=SSD' },
+          { id:'ssd2', name:'Samsung 990 Pro 2TB NVMe', spec:'PCIe Gen4 · 7450MB/s Read · M.2 2280', price:6995, img:'vnan2.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=SSD' },
+          { id:'ssd3', name:'WD Blue SN580 1TB NVMe',   spec:'PCIe Gen4 · 4150MB/s Read · M.2 2280', price:2995, img:'vdblue.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=SSD' },
+          { id:'ssd4', name:'Seagate BarraCuda 2TB HDD', spec:'7200RPM · SATA 6Gb/s · 256MB Cache',   price:3295, img:'seagate.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=HDD' },
+        ]
+      },
+      mobo: {
+        label: 'Motherboard', icon: '🔧',
+        options: [
+          { id:'mb1', name:'ASUS ROG STRIX B760-F Gaming',    spec:'LGA1700 · DDR5 · PCIe 5.0 · ATX · WiFi 6E', price:12995, img:'rog.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=MOBO' },
+          { id:'mb2', name:'MSI MAG B650 TOMAHAWK WIFI',      spec:'AM5 · DDR5 · PCIe 4.0 · ATX · WiFi 6E',    price:11995, img:'tomarhawk.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=MOBO' },
+          { id:'mb3', name:'Gigabyte B660M DS3H DDR4',        spec:'LGA1700 · DDR4 · PCIe 4.0 · Micro-ATX',    price:5995,  img:'bytegiga.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=MOBO' },
+          { id:'mb4', name:'ASUS TUF GAMING X670E-PLUS',      spec:'AM5 · DDR5 · PCIe 5.0 · WiFi 6 · ATX',     price:16995, img:'X670E.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=MOBO' },
+        ]
+      },
+      pcase: {
+        label: 'PC Case', icon: '🗄️',
+        options: [
+          { id:'case1', name:'Lian Li LANCOOL 216 RGB',        spec:'Mid Tower · ATX · Tempered Glass · USB-C',  price:5495, img:'mb1.png',    fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CASE' },
+          { id:'case2', name:'NZXT H510 Flow',                  spec:'Mid Tower · ATX · Mesh Front · 2×USB 3.0', price:4995, img:'mb2.png',        fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CASE' },
+          { id:'case3', name:'Cooler Master MasterBox Q300L',   spec:'Micro-ATX Tower · Magnetic Design',         price:2495, img:'mb3.png',     fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CASE' },
+          { id:'case4', name:'Fractal Design North',            spec:'Mid Tower · ATX · Walnut Front · 2 Fans',   price:7495, img:'mb4.png',    fb:'https://placehold.co/44x44/0a0f0a/00e676?text=CASE' },
+        ]
+      },
+      psu: {
+        label: 'Power Supply', icon: '⚡',
+        options: [
+          { id:'psu1', name:'Seasonic Focus GX-650 Gold', spec:'650W · 80+ Gold · Fully Modular',  price:4995,  img:'psu1.png',     fb:'https://placehold.co/44x44/0a0f0a/00e676?text=PSU' },
+          { id:'psu2', name:'Corsair RM850x Gold',         spec:'850W · 80+ Gold · Fully Modular',  price:6995,  img:'psu2.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=PSU' },
+          { id:'psu3', name:'Cooler Master MWE 550 Bronze', spec:'550W · 80+ Bronze · Semi-Modular', price:2495, img:'psu3.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=PSU' },
+          { id:'psu4', name:'EVGA SuperNOVA 1000 G7',      spec:'1000W · 80+ Gold · Fully Modular', price:10995, img:'psu4.png',         fb:'https://placehold.co/44x44/0a0f0a/00e676?text=PSU' },
+        ]
+      },
+      cooler: {
+        label: 'CPU Cooler', icon: '❄️',
+        options: [
+          { id:'cool1', name:'DeepCool AK620 Air Cooler',       spec:'260W TDP · Dual Tower · 6 Heatpipes',      price:2995,  img:'a1.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=COOL' },
+          { id:'cool2', name:'Corsair iCUE H150i Elite LCD',    spec:'360mm AIO · LCD Pump Head · ARGB',         price:12995, img:'a2.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=AIO' },
+          { id:'cool3', name:'Noctua NH-D15 Air Cooler',        spec:'250W TDP · Dual Tower · Chromax Black',    price:5495,  img:'a3.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=COOL' },
+          { id:'cool4', name:"be quiet! Pure Rock 2",           spec:'150W TDP · Single Tower · 120mm Fan',      price:1895,  img:'a4.png', fb:'https://placehold.co/44x44/0a0f0a/00e676?text=COOL' },
+        ]
+      }
+    };
+
+    let buildState = {};
+    let lastPreviewOpt = null;
+
+    const presets = {
+      entry: { cpu:'cpu5', gpu:'gpu2', ram:'ram4', storage:'ssd3', mobo:'mb3', pcase:'case3', psu:'psu3', cooler:'cool4' },
+      mid:   { cpu:'cpu1', gpu:'gpu1', ram:'ram1', storage:'ssd1', mobo:'mb1', pcase:'case2', psu:'psu1', cooler:'cool1' },
+      high:  { cpu:'cpu4', gpu:'gpu3', ram:'ram3', storage:'ssd2', mobo:'mb4', pcase:'case1', psu:'psu2', cooler:'cool3' },
+    };
+
+    function loadPreset(preset, btn) {
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      if (preset === 'clear') {
+        buildState = {};
+        lastPreviewOpt = null;
+        renderBuilderRows();
+        updateBuildTotal();
+        updatePreview(null);
+        updateCompatBadge();
+        showToast('🗑️ Build cleared!');
+        return;
+      }
+      if (btn) btn.classList.add('active');
+      buildState = Object.assign({}, presets[preset]);
+      renderBuilderRows();
+      updateBuildTotal();
+      updateCompatBadge();
+      const cpuOpt = buildComponents.cpu.options.find(o => o.id === buildState.cpu);
+      if (cpuOpt) updatePreview(cpuOpt);
+      const labels = { entry:'Entry', mid:'Mid-Range', high:'High-End' };
+      showToast('✓ ' + labels[preset] + ' preset loaded!');
+    }
+
+    function renderBuilderRows() {
+      const container = document.getElementById('builderRows');
+      container.innerHTML = '';
+      Object.entries(buildComponents).forEach(([key, comp]) => {
+        const selectedId = buildState[key];
+        const selected = selectedId ? comp.options.find(o => o.id === selectedId) : null;
+        const row = document.createElement('div');
+        row.className = 'part-row' + (selected ? ' selected' : '');
+        row.id = 'brow-' + key;
+        const thumbHtml = selected
+          ? `<img class="part-thumb" id="bthumb-${key}" alt="${comp.label}">`
+          : `<div class="part-thumb-empty">${comp.icon}</div>`;
+        const opts = comp.options.map(o =>
+          `<option value="${o.id}" ${selectedId === o.id ? 'selected' : ''}>${o.name} — ₱${o.price.toLocaleString()}</option>`
+        ).join('');
+        row.innerHTML = `
+          ${thumbHtml}
+          <div class="part-info">
+            <div class="part-lbl">${comp.label}</div>
+            <select class="part-select${selected ? '' : ' empty-sel'}" onchange="onPartChange('${key}',this)" onfocus="onPartFocus('${key}')">
+              <option value="">— Select ${comp.label} —</option>
+              ${opts}
+            </select>
+            ${selected ? `<div style="font-size:.63rem;color:var(--mute);margin-top:2px">${selected.spec}</div>` : ''}
+          </div>
+          <div class="part-price${selected ? '' : ' hidden'}" id="bprice-${key}">${selected ? '₱' + selected.price.toLocaleString() : ''}</div>
+          ${selected ? `<button class="remove-part" onclick="removePart('${key}')" title="Remove"><i class="bi bi-x-lg"></i></button>` : ''}
+        `;
+        container.appendChild(row);
+        if (selected) {
+          const img = document.getElementById('bthumb-' + key);
+          if (img) loadImg(img, selected.img, selected.fb);
+        }
+      });
+    }
+
+    function onPartChange(key, select) {
+      const val = select.value;
+      if (!val) { removePart(key); return; }
+      buildState[key] = val;
+      const comp = buildComponents[key];
+      const opt = comp.options.find(o => o.id === val);
+      const row = document.getElementById('brow-' + key);
+      row.className = 'part-row selected';
+      row.innerHTML = `
+        <img class="part-thumb" id="bthumb-${key}" alt="${comp.label}">
+        <div class="part-info">
+          <div class="part-lbl">${comp.label}</div>
+          <select class="part-select" onchange="onPartChange('${key}',this)" onfocus="onPartFocus('${key}')">
+            <option value="">— Select ${comp.label} —</option>
+            ${comp.options.map(o => `<option value="${o.id}" ${val === o.id ? 'selected' : ''}>${o.name} — ₱${o.price.toLocaleString()}</option>`).join('')}
+          </select>
+          <div style="font-size:.63rem;color:var(--mute);margin-top:2px">${opt.spec}</div>
+        </div>
+        <div class="part-price" id="bprice-${key}">₱${opt.price.toLocaleString()}</div>
+        <button class="remove-part" onclick="removePart('${key}')" title="Remove"><i class="bi bi-x-lg"></i></button>
+      `;
+      loadImg(document.getElementById('bthumb-' + key), opt.img, opt.fb);
+      updatePreview(opt);
+      updateBuildTotal();
+      updateCompatBadge();
+    }
+
+    function onPartFocus(key) {
+      const selectedId = buildState[key];
+      if (selectedId) {
+        const opt = buildComponents[key].options.find(o => o.id === selectedId);
+        if (opt) updatePreview(opt);
+      }
+    }
+
+    function removePart(key) {
+      delete buildState[key];
+      renderBuilderRows();
+      updateBuildTotal();
+      if (Object.keys(buildState).length === 0) {
+        updatePreview(null);
+        lastPreviewOpt = null;
+      }
+      updateCompatBadge();
+    }
+
+    function updatePreview(opt) {
+      const img = document.getElementById('buildPreviewImg');
+      const noPreview = document.getElementById('buildNoPreview');
+      if (opt) {
+        lastPreviewOpt = opt;
+        img.style.display = 'block';
+        noPreview.style.display = 'none';
+        loadImg(img, opt.img, opt.fb);
+      } else {
+        img.style.display = 'none';
+        noPreview.style.display = 'block';
+      }
+    }
+
+    function updateBuildTotal() {
+      let total = 0;
+      Object.entries(buildState).forEach(([key, id]) => {
+        const opt = buildComponents[key].options.find(o => o.id === id);
+        if (opt) total += opt.price;
+      });
+      document.getElementById('buildTotal').textContent = total > 0 ? '₱' + total.toLocaleString() : '₱0';
+      const count = Object.keys(buildState).length;
+      const totalParts = Object.keys(buildComponents).length;
+      document.getElementById('buildLabel').innerHTML = count > 0
+        ? `Build Configuration <span class="part-count-badge">${count}/${totalParts} parts</span>`
+        : 'Configure Your Build';
+      const required = ['cpu', 'gpu', 'ram', 'storage'];
+      const hasRequired = required.every(k => buildState[k]);
+      document.getElementById('btnAddBuild').disabled = !hasRequired;
+    }
+
+    function updateCompatBadge() {
+      const badge = document.getElementById('compatBadge');
+      const count = Object.keys(buildState).length;
+      if (count === 0) { badge.innerHTML = ''; return; }
+      let issues = [];
+      if (buildState.cpu && buildState.mobo) {
+        const cpu = buildComponents.cpu.options.find(o => o.id === buildState.cpu);
+        const mb  = buildComponents.mobo.options.find(o => o.id === buildState.mobo);
+        if (cpu && mb) {
+          const intelCPU = cpu.name.includes('Intel');
+          const amdCPU   = cpu.name.includes('AMD') || cpu.name.includes('Ryzen');
+          const intelMB  = mb.spec.includes('LGA1700');
+          const amdMB    = mb.spec.includes('AM5') || mb.spec.includes('AM4');
+          if (intelCPU && amdMB)   issues.push('⚠️ Socket mismatch: Intel CPU needs LGA1700 motherboard');
+          if (amdCPU   && intelMB) issues.push('⚠️ Socket mismatch: AMD CPU needs AM5 motherboard');
+        }
+      }
+      if (issues.length > 0) {
+        badge.innerHTML = `<div class="compat-badge compat-warn"><i class="bi bi-exclamation-triangle-fill me-1"></i>${issues[0]}</div>`;
+      } else if (count >= 4) {
+        badge.innerHTML = `<div class="compat-badge compat-ok"><i class="bi bi-check-circle-fill me-1"></i>Components compatible ✓</div>`;
+      } else {
+        badge.innerHTML = '';
+      }
+    }
+
+    function addBuildToCart() {
+      let addedCount = 0;
+      Object.entries(buildState).forEach(([key, id]) => {
+        const opt = buildComponents[key].options.find(o => o.id === id);
+        if (opt) {
+          const existing = cart.find(x => x.id === opt.id);
+          if (existing) existing.qty++;
+          else cart.push({ id: opt.id, nm: opt.name, px: opt.price, src: opt.img, fb: opt.fb, qty: 1 });
+          addedCount++;
+        }
+      });
+      updateCart();
+      showToast(`🖥️ ${addedCount} components added to cart!`);
+    }
+
+    function shareBuild() {
+      const parts = Object.entries(buildState).map(([key, id]) => {
+        const opt = buildComponents[key].options.find(o => o.id === id);
+        return opt ? opt.name : null;
+      }).filter(Boolean);
+      if (parts.length === 0) { showToast('⚠️ Add some components first!'); return; }
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText('My EasyPC Build:\n' + parts.join('\n'))
+          .then(() => showToast('🔗 Build list copied to clipboard!'))
+          .catch(() => showToast('🔗 Build link ready to share!'));
+      } else {
+        showToast('🔗 Build link ready to share!');
+      }
+    }
+
+    renderBuilderRows();
+    updateBuildTotal();
+    updateCart();
+
+    /* ── Auth System ───────────────────────────────────────────── */
+    // Simple in-memory user store
+    let users = []; // { name, email, password }
+    let currentUser = null;
+
+    function switchTab(tab) {
+      const isLogin = tab === 'login';
+      document.getElementById('tabLogin').classList.toggle('active', isLogin);
+      document.getElementById('tabRegister').classList.toggle('active', !isLogin);
+      document.getElementById('loginForm').style.display = isLogin ? '' : 'none';
+      document.getElementById('registerForm').style.display = isLogin ? 'none' : '';
+      document.getElementById('loginErr').textContent = '';
+      document.getElementById('regErr').textContent = '';
+      document.getElementById('regOk').textContent = '';
+    }
+
+    function doRegister() {
+      const name  = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim().toLowerCase();
+      const pass  = document.getElementById('regPass').value;
+      const pass2 = document.getElementById('regPass2').value;
+      const errEl = document.getElementById('regErr');
+      const okEl  = document.getElementById('regOk');
+      errEl.textContent = '';
+      okEl.textContent  = '';
+
+      if (!name)                            { errEl.textContent = 'Please enter your full name.'; return; }
+      if (!email || !email.includes('@'))   { errEl.textContent = 'Please enter a valid email.'; return; }
+      if (pass.length < 6)                  { errEl.textContent = 'Password must be at least 6 characters.'; return; }
+      if (pass !== pass2)                   { errEl.textContent = 'Passwords do not match.'; return; }
+      if (users.find(u => u.email === email)) { errEl.textContent = 'This email is already registered.'; return; }
+
+      users.push({ name, email, password: pass });
+      okEl.textContent = '✓ Account created! Redirecting to login…';
+      setTimeout(() => {
+        switchTab('login');
+        document.getElementById('loginEmail').value = email;
+      }, 1200);
+    }
+
+    function doLogin() {
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const pass  = document.getElementById('loginPass').value;
+      const errEl = document.getElementById('loginErr');
+      errEl.textContent = '';
+
+      if (!email || !email.includes('@')) { errEl.textContent = 'Please enter your email.'; return; }
+      if (!pass)                          { errEl.textContent = 'Please enter your password.'; return; }
+
+      const user = users.find(u => u.email === email && u.password === pass);
+      if (!user) { errEl.textContent = 'Invalid email or password.'; return; }
+
+      currentUser = user;
+      document.getElementById('authOverlay').style.display = 'none';
+      document.getElementById('navUserBadge').style.display = 'flex';
+      document.getElementById('navLogoutBtn').style.display = '';
+      document.getElementById('navUserName').textContent = user.name.split(' ')[0];
+      showToast('👋 Welcome back, ' + user.name.split(' ')[0] + '!');
+    }
+
+    function doLogout() {
+      currentUser = null;
+      document.getElementById('authOverlay').style.display = 'flex';
+      document.getElementById('navUserBadge').style.display = 'none';
+      document.getElementById('navLogoutBtn').style.display = 'none';
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPass').value = '';
+      document.getElementById('loginErr').textContent = '';
+      switchTab('login');
+    }
+
+    // Allow Enter key on auth inputs
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') {
+        const overlay = document.getElementById('authOverlay');
+        if (overlay.style.display === 'none') return;
+        if (document.getElementById('loginForm').style.display !== 'none') doLogin();
+        else doRegister();
+      }
+    });
+  </script>
+</body>
+</html>
